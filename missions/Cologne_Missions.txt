@@ -1,0 +1,1028 @@
+German Dominance = {
+	slot = 1
+	generic = no
+	ai = yes
+	potential = {
+		always = yes
+	}
+
+	Build to forcelimit = {
+		icon = mission_build_up_to_force_limit
+		position = 1
+		required_missions = {  }
+		trigger = {
+			army_size_percentage = 1
+		}
+		effect = {
+			north_rhein_area = {
+				add_permanent_claim = KOL
+			}
+			lower_rheinland_area = {
+				add_permanent_claim = KOL
+			}
+		}
+	}
+	Conquer Rhineland = {
+		icon = mission_build_up_to_force_limit
+		position = 2
+		required_missions = { Build to forcelimit }
+		provinces_to_highlight = {
+			OR = {
+				area = north_rhine_area
+				area = lower_rhineland_area
+			}
+			NOT = {
+				country_or_non_soverein_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			north_rhine_area = {
+				type = all
+				country_or_non_soverein_subject_holds = ROOT
+			}
+			lower_rhineland_area = {
+				type = all
+				country_or_non_soverein_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_prestige = 10
+			hesse_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	Conquer Hesse = {
+		icon = mission_build_up_to_force_limit
+		position = 3
+		required_missions = { Conquer Rhineland }
+		trigger = {
+			hesse_area = {
+				type = all
+				country_or_non_soverein_subject_holds = ROOT
+			}
+		 }
+		effect = {
+			palatinate_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			alsace_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			baden_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		 }
+	}
+	Finish the conquest of the banks of the rhine upstream = {
+		icon = mission_build_up_to_force_limit
+		position = 4
+		required_missions = { Conquer Hesse }
+		trigger = {
+			palatinate_area = {
+				type = all
+				country_or_non_soverein_subject_holds = ROOT
+			}
+			alsace_area = {
+				type = all
+				country_or_non_soverein_subject_holds = ROOT
+			}
+			baden_area = {
+				type = all
+				country_or_non_soverein_subject_holds = ROOT
+			}
+		 }
+		effect = {
+
+		 }
+	}
+	Rhine trade = {
+		icon = mission_build_up_to_force_limit
+		position = 5
+		required_missions = { Finish the conquest of the banks of the rhine upstream }
+		trigger = {
+			1876 = {
+				trade_share = {
+					country = ROOT
+					share = 60
+				}
+			}
+		 }
+		effect = {
+			add_country_modifier = {
+				name = kol_rhine_trade
+				duration = -1
+				desc = KOL_RHINE_TRADE_DESC_TOOLTIP
+				hidden = no
+			}
+		 }
+	}
+	Expand the home market = {
+		icon = mission_build_up_to_force_limit
+		position = 6
+		required_missions = { Rhine trade The roar of industry }
+		trigger = {
+			1876 = {
+				trade_node_value = 50
+			}
+		 }
+		effect = {
+			north_rhine_area = {
+				add_permanent_province_modifier = {
+					name = rhine_trade_encuraged
+					duration = -1	
+				}
+			}
+			lower_rhineland_area = {
+				add_permanent_province_modifier = {
+					name = rhine_trade_encuraged
+					duration = -1
+				}
+			}
+			palatinate_area = {
+				add_permanent_province_modifier = {
+					name = rhine_trade_encuraged
+					duration = -1
+				}
+			}
+			baden_area = {
+				add_permanent_province_modifier = {
+					name = rhine_trade_encuraged
+					duration = -1
+				}
+			}
+			alsace_area = {
+				add_permanent_province_modifier = {
+					name = rhine_trade_encuraged
+					duration = -1
+				}
+			}
+			78 = {
+				add_permanent_province_modifier = {
+					name = rhine_trade_encuraged
+					duration = -1
+				}
+			}
+			1876 = {
+				add_permanent_province_modifier = {
+					name = rhine_trade_encuraged
+					duration = -1
+				}
+			}
+		 }
+	}
+	Army Reform = {
+		icon = mission_build_up_to_force_limit
+		position = 7
+		required_missions = {  }
+		trigger = {
+			army_professionalism = 1
+			army_tradition = 80
+		}
+		effect = {
+			add_country_modifier = {
+				name = modern_army
+				duration = -1
+				desc = MODERNIZED_ARMY_KOL_DESC_TOOLTIP
+				hidden = no
+			}
+		}
+	}
+	German Dominance = {
+		icon = mission_build_up_to_force_limit
+		position = 8
+		required_missions = { Army Reform }
+		trigger = {
+			army_strength = {
+				who = PRU
+				value = 1
+			}
+		}
+		effect = {
+			add_casus_belli = {
+				target = {
+					every_country = {
+						limit = {
+							culture_group = german
+						}
+					}
+					type = cb_nationalism
+					months = -1
+				}
+			}
+		}
+	}
+
+	Unify Germany = {
+		icon = mission_build_up_to_force_limit
+		position = 9
+		required_missions = { German Dominance }
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					OR = {
+						region = north_german_region
+						region = south_german_region
+					}
+					root = {
+						NOT = {
+							num_of_owned_provinces_with = {
+								is_core = ROOT
+								OR = {
+									region = north_german_region
+									region = south_german_region
+								}
+								value = 50
+							}
+						}
+					}
+				}
+				province_id = 50
+				province_id = 57
+				province_id = 65
+				AND = {
+					ROOT = {
+						NOT = { owns_core_province = 75 }
+						NOT = { owns_core_province = 41 }
+					}
+					OR = {
+						province_id = 75
+						province_id = 41
+					}
+				}
+				AND = {
+					ROOT = {
+						NOT = { owns_core_province = 1868 }
+						NOT = { owns_core_province = 70 }
+					}
+					OR = {
+						province_id = 1868
+						province_id = 70
+					}
+				}
+				AND = {
+					ROOT = {
+						NOT = { owns_core_province = 1876 }
+						NOT = { owns_core_province = 67 }
+					}
+					OR = {
+						province_id = 1876
+						province_id = 67
+					}
+				}
+				AND = {
+					ROOT = {
+						NOT = { owns_core_province = 1762 }
+						NOT = { owns_core_province = 85 }
+					}
+					OR = {
+						province_id = 1762
+						province_id = 85
+					}
+				}
+				AND = {
+					ROOT = {
+						NOT = { owns_core_province = 41 }
+						NOT = { owns_core_province = 75 }
+					}
+					OR = {
+						province_id = 41
+						province_id = 75
+					}
+				}
+				AND = {
+					ROOT = {
+						NOT = { owns_core_province = 44 }
+						NOT = { owns_core_province = 45 }
+					}
+					OR = {
+						province_id = 44
+						province_id = 45
+					}
+				}
+				AND = {
+					ROOT = {
+						NOT = { owns_core_province = 61 }
+						NOT = { owns_core_province = 63 }
+					}
+					OR = {
+						province_id = 61
+						province_id = 63
+					}
+				}
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		trigger = {
+			owns_core_province = 50	# Berlin
+			owns_core_province = 57	# Brunswick
+			owns_core_province = 65	# M�nchen
+			OR = {
+				owns_core_province = 1868 # Augsburg
+				owns_core_province = 70 # Wurttemberg
+			}
+			OR = {
+				owns_core_province = 67	# N�rnberg
+				owns_core_province = 1876 # Frankfurt
+			}
+			OR = {
+				owns_core_province = 1762 # Niederhessen
+				owns_core_province = 85	# K�ln
+			}
+			OR = {
+				owns_core_province = 41	# K�nigsberg
+				owns_core_province = 75	# Strassburg
+			}
+			OR = {
+				owns_core_province = 44	# Hamburg
+				owns_core_province = 45	# Lubeck
+			}
+			OR = {
+				owns_core_province = 61	# Dresden
+				owns_core_province = 63	# Th�ringen
+			}
+			num_of_owned_provinces_with = {
+				is_core = ROOT
+				OR = {
+					region = north_german_region
+					region = south_german_region
+				}
+				value = 50
+			}
+		 }
+		effect = { }
+	}
+
+	Storm of Steel = {
+		icon = mission_build_up_to_force_limit
+		position = 10
+		required_missions = { Unify Germany }
+		trigger = {
+			war_score_against = {
+				who = FRA
+				value = 50
+			}
+			war_with = RUS
+		}
+		effect = {
+			add_country_modifier = {
+				name = storm_of_steel
+				duration = 1825
+			}
+		 }
+	}
+}
+
+slot 2 = {
+	slot = 2
+	generic = no
+	ai = yes
+	potential = {
+		always = yes
+	}
+
+	Conquer Westphalia = {
+		icon = mission_build_up_to_force_limit
+		position = 2
+		required_missions = { Build to forcelimit }
+		trigger = {
+			south_westphalia_area = {
+				type = all
+				country_or_non_soverein_subject_holds = ROOT
+			}
+			north_westphalia = {
+				type = all
+				country_or_non_soverein_subject_holds = ROOT
+			}
+		}
+		effect = {
+			braunschweig_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	Conquer Braunschweig = {
+		icon = mission_build_up_to_force_limit
+		position = 4
+		required_missions = { Conquer Westphalia }
+		trigger = {
+			owns_all_provinces = {
+				area = braunschweig
+			}
+		}
+		effect = {
+			weser_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT}
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	Control the Weser Estuary = {
+		icon = mission_build_up_to_force_limit
+		position = 5
+		required_missions = { Conquer Braunschweig }
+		trigger = {
+			weser_area = {
+				type = all
+				country_or_non_soverein_subject_holds = ROOT
+			}
+		}
+		effect = {
+			1874 = {
+				add_permanent_province_modifier = {
+					name = inland_trade_encuraged
+					duration = -1
+				}
+			}
+		}
+	}
+	Imperial Relations = {
+		icon = mission_build_up_to_force_limit
+		position = 7
+		required_missions = {  }
+		trigger = {
+			AND = {
+				any_ally = {
+					is_emperor = yes
+				}
+				any_ally = {
+					is_elector = yes
+				}
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = kol_imperial_relations
+				duration = -1
+				desc = KOL_IMPERIAL_RELATIONS
+			}
+		}
+	}
+	Secured Electorship = {
+		icon = mission_build_up_to_force_limit
+		position = 8
+		required_missions = { Imperial Relations }
+		trigger = {
+			OR = {
+				hre_religion_locked = yes
+				hre_religion_treaty = yes
+			}
+			ROOT = { is_elector = yes }
+		}
+		effect = {
+			add_country_modifier = {
+				name = kol_traditional_elector
+				duration = -1
+				desc = kol_traditional_elector_desc_tooltip
+			}
+		}
+	}
+}
+
+slot_3 = {
+	slot = 3
+	generic = no
+	ai = yes
+	potential = {
+		always = yes
+	}
+
+	Control_the_Ems_Estuary = {
+		icon = mission_build_up_to_force_limit
+		position = 3
+		required_missions = { Conquer Westphalia }
+		trigger = {
+			1931 = {
+				country_or_non_soverein_subject_holds = ROOT
+			}
+		}
+		effect = {
+			1931 = {
+				add_permanent_province_modifier = {
+					name = inland_trade_encuraged
+					duration = -1
+				}
+			}
+		}
+	}
+	Control the Rhine Estuary = {
+		icon = mission_build_up_to_force_limit
+		position = 4
+		required_missions = { Control the Ems Estuary }
+		trigger = {
+			4383 = {
+				country_or_non_soverein_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_permanent_province_modifier = {
+				name = main_port_to_germany
+				duration = -1
+			}
+		}
+	}
+	Channel Trade = {
+		icon = mission_build_up_to_force_limit
+		position = 5
+		required_missions = { Control the Rhine Estuary }
+		trigger = {
+			1269 = {
+				trade_share = {
+					country = ROOT
+					share = 25
+				}
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = kol_world_trade
+				duration = -1
+			}
+		}
+	}
+}
+
+slot 4 = {
+	slot = 4
+	generic = no
+	ai = yes
+	potential = {
+		always = yes
+	}
+
+	Develop Köln = {
+		icon = mission_build_up_to_force_limit
+		position = 1
+		required_missions = {  }
+		trigger = {
+			85 = {
+				num_of_times_improved_by_owner = 3
+				has_building = temple
+			}
+		}
+		effect = {
+			remove_building = temple
+			add_building = cathedral
+		}
+	}
+	Increase the Cathedral to level 2 = {
+		icon = mission_build_up_to_force_limit
+		position = 2
+		required_missions = { Develop Köln }
+		trigger = {
+			85 = {
+				has_great_project = {
+					type = any
+					tier = 2
+				}
+			}
+		}
+		effect = {
+			add_great_project_tier {
+				type = cologne_cathedral
+				tier = 1
+			}
+		}
+	}
+	Develop the Rhine area = {
+		icon = mission_build_up_to_force_limit
+		position = 3
+		required_missions = { Conquer Rhineland Increase the Cathedral to level 2 }
+		trigger = {
+			north_rhine_area = {
+				type = all
+				base_production = 8
+				has_building = workshop
+			}
+			lower_rhineland_area = {
+				type = all
+				base_production = 8
+				has_building = workshop
+			}
+		}
+		effect = {
+			north_rhine_area = {
+				remove_building = workshop
+				add_building = counting_house
+			}
+			lower_rhineland_area = {
+				remove_building = workshop
+				add_building = counting_house
+			}
+			add_years_of_income = 2
+		}
+	}
+	Center of German Industry = {
+		icon = mission_build_up_to_force_limit
+		position = 4
+		required_missions = { Develop the Rhine area }
+		trigger = {
+			north_rhine_area = {
+				type = all
+				has_building = manufactory
+			}
+			lower_rhineland_area = {
+				type = all
+				has_building = manufactory
+			}
+			palatinate_area = {
+				type = all
+				has_building = manufactory
+			}
+		}
+		effect = {
+			north_rhine_area = {
+				add_permanent_province_modifier = {
+					name = industrialized_rhineland
+					duration = -1
+				}
+			}
+			lower_rhineland_area = {
+				add_permanent_province_modifier = {
+					name = industrialized_rhineland
+					duration = -1
+				}
+			}
+			palatinate_area = {
+				add_permanent_province_modifier = {
+					name = industrialized_rhineland
+					duration = -1
+				}
+			}
+			1760 = {
+				change_trade_good = iron
+			}
+		}
+	}
+	Weser Defensive Line = {
+		icon = mission_build_up_to_force_limit
+		position = 5
+		required_missions = { Conquer Braunschweig }
+		trigger = {
+			4774 = {
+				country_or_non_soverein_subject_holds = ROOT
+				fort_level = 2
+			}
+			2972 = {
+				country_or_non_soverein_subject_holds = ROOT
+				fort_level = 2
+			}
+			2971 = {
+				country_or_non_soverein_subject_holds = ROOT
+				fort_level = 2
+			}
+		}
+		effect = {
+			4774 = {
+				add_province_modifier = {
+					name = kol_river_fort_line
+					duration = -1
+				}
+				if = {
+					limit = {
+						ROOT = { has_building = ramparts }
+					}
+					add_province_modifier = {
+						name = festung_staat_rheinland
+						duration = -1
+					}
+				}
+			}
+			2972 = {
+				add_province_modifier = {
+					name = kol_river_fort_line
+					duration = -1
+				}
+				if = {
+					limit = {
+						ROOT = { has_building = ramparts }
+					}
+					add_province_modifier = {
+						name = festung_staat_rheinland
+						duration = -1
+					}
+				}
+			}
+			2971 = {
+				add_province_modifier = {
+					name = kol_river_fort_line
+					duration = -1
+				}
+				if = {
+					limit = {
+						ROOT = { has_building = ramparts }
+					}
+					add_province_modifier = {
+						name = festung_staat_rheinland
+						duration = -1
+					}
+				}
+			}
+		}
+	}
+	Win leage war = {
+		icon = mission_build_up_to_force_limit
+		position = 7
+		required_missions = { Religious Question }
+		trigger = {
+			has_country_flag = religious_league_war_on_winning_side
+		}
+		effect = {
+			add_country_modifier = {
+				name = heretics_gtfo
+				duration = -1
+			}
+		}
+	}
+}
+
+slot 5 = {
+	slot = 5
+	generic = no
+	ai = yes
+	potential = {
+		always = yes
+	}
+
+	Develop Westphalia = {
+		icon = mission_build_up_to_force_limit
+		position = 3
+		required_missions = { Conquer Westphalia Increase the Cathedral to level 2 }
+		trigger = {
+			south_westphalia_area = {
+				type = all
+				base_production = 8
+				has_building = workshop
+			}
+			north_westphalia_area = {
+				type = all
+				base_production = 8
+				has_building = workshop
+			}
+		}
+		effect = {
+			south_westphalia_area = {
+				remove_building = workshop
+				add_building = counting_house
+			}
+			north_westphalia_area = {
+				remove_building = workshop
+				add_building = counting_house
+			}
+			add_years_of_income = 2
+		}
+	}
+	Educate the Nation = {
+		icon = mission_build_up_to_force_limit
+		position = 4
+		required_missions = { Develop the Rhine area Develop Westphalia }
+		trigger = {
+			north_rhine_area = {
+				type = all
+				has_building = university
+			}
+			lower_rhineland_area = {
+				type = all
+				has_building = university
+			}
+			south_westphalia_area = {
+				type = all
+				has_building = university
+			}
+			north_westphalia_area = {
+				type = all
+				has_building = university
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = surge_of_great_thinkers
+				duration = 18250
+			}
+		}
+	}
+	The roar of industry = {
+		icon = mission_build_up_to_force_limit
+		position = 5
+		required_missions = { Center of German Industry }
+		trigger = {
+			trade_goods_produced_amount = {
+				trade_goods = grain
+				amount = 15
+			}
+			trade_goods_produced_amount = {
+				trade_goods = iron
+				amount = 5
+			}
+			trade_goods_produced_amount = {
+				trade_goods = copper
+				amount = 5
+			}
+			trade_goods_produced_amount = {
+				trade_goods = paper
+				amount = 5
+			}
+			trade_goods_produced_amount = {
+				trade_goods = cloth
+				amount = 15
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = state_sponsored_industries
+				duration = -1
+			}
+		}
+	}
+	Religious Question = {
+		icon = mission_build_up_to_force_limit
+		position = 6
+		required_missions = {  }
+		trigger = {
+			religious_unity = 0.9
+			religion_years = { protestant = 30 }
+		}
+		effect = {
+			if = {
+				limit = {
+					religion = catholic
+				}
+				set_country_flag = kol_cath
+			}
+			else_if = {
+				limit = {
+					religion = protestant
+				}
+				set_country_flag = kol_prot
+			}
+			else_if = {
+				limit = {
+					religion = reformed
+				}
+				set_country_flag = kol_ref
+			}
+			swap_non_generic_missions = yes
+		}
+	}
+}
+
+catholic path = {
+	slot = 5
+	generic = no
+	ai = yes
+	potential = {
+		has_country_flag = kol_cath
+	}
+
+	Staying true to the Pope = {
+		icon = mission_build_up_to_force_limit
+		position = 7
+		required_missions = { Religious Question }
+		trigger = {
+			reverse_has_opinion = {
+				who = PAP
+				value = 100
+			}
+			papal_influence = 100	
+		}
+		effect = {A}
+	}
+}
+
+protestant path = {
+	slot = 5
+	generic = no
+	ai = yes
+	potential = {
+		has_country_flag = kol_prot
+	}
+
+	Found the new Church = {
+		icon = mission_build_up_to_force_limit
+		position = 7
+		required_missions = { Religious Question }
+		trigger = { }
+		effect = { }
+	}
+}
+
+reformed path = {
+	slot = 5
+	generic = no
+	ai = yes
+	potential = {
+		has_country_flag = kol_ref
+	}
+
+	The likes of Calvin and Hutter = {
+		icon = mission_build_up_to_force_limit
+		position = 7
+		required_missions = {  }
+		trigger = {
+			fervor = 50
+			has_active_fervor = yes
+		}
+		effect = { }
+	}
+	How radical of a reformation = {
+		icon = mission_build_up_to_force_limit
+		position = 8
+		required_missions = {  }
+		trigger = {
+			has_global_flag = great_peasants_war_flag
+		}
+		effect = {
+			country_event = {
+				id = kol_radical_reformation.1
+				days = 2
+				tooltip = KOL_RADICAL_REFORMATION.1
+			}
+		}
+	}
+}
+
+very radical = {
+	slot = 5
+	generic = no
+	ai = yes
+	potential = {
+		has_country_flag = kol_very_radical
+	}
+
+	A truly radical reformation = {
+		icon = mission_build_up_to_force_limit
+		position = 9
+		required_missions = { How radical of a reformation }
+		trigger = {
+			always = yes
+		}
+		effect = { }
+	}
+}
+
+not so radical = {
+	slot = 5
+	generic = no
+	ai = yes
+	potential = {
+		has_country_flag = kol_not_so_radical
+	}
+
+	Keeping it real = {
+		icon = mission_build_up_to_force_limit
+		position = 9
+		required_missions = {  }
+		trigger = {
+			always = yes
+		}
+		effect = { }
+	}
+}
+
+branching 1 = {
+	slot = 5
+	generic = no
+	ai = yes
+	potential = {
+		NOT = { has_country_flag = kol_cath }
+		NOT = { has_country_flag = kol_prot }	
+		NOT = { has_country_flag = kol_ref }	
+		}
+
+	Branching mission = {
+		icon = mission_unknown_mission
+		position = 7
+		required_missions = { Religious Question }
+		trigger = {
+			always = no
+		}
+		effect = { }
+	}
+}
+

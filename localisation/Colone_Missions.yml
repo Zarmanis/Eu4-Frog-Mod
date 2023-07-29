@@ -1,0 +1,124 @@
+l_english:
+
+ #---------------------------------------------------------
+ # German Dominance
+ #---------------------------------------------------------
+
+ Build to forcelimit_title: "Build To Forcelimit"
+ Build to forcelimit_desc: ""
+ Conquer Rhineland_title: "Conquer Rhineland"
+ Conquer Rhineland_desc: ""
+ Conquer Hesse_title: "Conquer Hesse"
+ Conquer Hesse_desc: ""
+ Finish the conquest of the banks of the rhine upstream_title: "Finish The Conquest Of The Banks Of The Rhine Upstream"
+ Finish the conquest of the banks of the rhine upstream_desc: ""
+ Rhine trade_title: "Rhine Trade"
+ Rhine trade_desc: ""
+ Expand the home market_title: "Expand The Home Market"
+ Expand the home market_desc: ""
+ Army Reform_title: "Army Reform"
+ Army Reform_desc: ""
+ German Dominance_title: "German Dominance"
+ German Dominance_desc: ""
+ Storm of Steel_title: "Storm Of Steel"
+ Storm of Steel_desc: ""
+
+ #---------------------------------------------------------
+ # Slot 2
+ #---------------------------------------------------------
+
+ Conquer Westphalia_title: "Conquer Westphalia"
+ Conquer Westphalia_desc: ""
+ Conquer Braunschweig_title: "Conquer Braunschweig"
+ Conquer Braunschweig_desc: ""
+ Control the Weser Estuary_title: "Control The Weser Estuary"
+ Control the Weser Estuary_desc: ""
+ Imperial Relations_title: "Imperial Relations"
+ Imperial Relations_desc: ""
+ Secured Electorship_title: "Secured Electorship"
+ Secured Electorship_desc: ""
+
+ #---------------------------------------------------------
+ # Slot 3
+ #---------------------------------------------------------
+
+ Control the Ems Estuary_title: "Control The Ems Estuary"
+ Control the Ems Estuary_desc: ""
+ Control the Rhine Estuary_title: "Control The Rhine Estuary"
+ Control the Rhine Estuary_desc: ""
+ Channel Trade_title: "Channel Trade"
+ Channel Trade_desc: ""
+
+ #---------------------------------------------------------
+ # Slot 4
+ #---------------------------------------------------------
+
+ Develop Köln_title: "Develop Köln"
+ Develop Köln_desc: ""
+ Increase the Cathedral to level 2_title: "Increase The Cathedral To Level 2"
+ Increase the Cathedral to level 2_desc: ""
+ Develop the Rhine area_title: "Develop The Rhine Area"
+ Develop the Rhine area_desc: ""
+ Center of German Industry_title: "Center Of German Industry"
+ Center of German Industry_desc: ""
+ Weser Defensive Line_title: "Weser Defensive Line"
+ Weser Defensive Line_desc: ""
+ Win leage war_title: "Win Leage War"
+ Win leage war_desc: ""
+
+ #---------------------------------------------------------
+ # Slot 5
+ #---------------------------------------------------------
+
+ Develop Westphalia_title: "Develop Westphalia"
+ Develop Westphalia_desc: ""
+ Educate the Nation_title: "Educate The Nation"
+ Educate the Nation_desc: ""
+ The roar of industry_title: "The Roar Of Industry"
+ The roar of industry_desc: ""
+ Religious Question_title: "Religious Question"
+ Religious Question_desc: ""
+
+ #---------------------------------------------------------
+ # Catholic Path
+ #---------------------------------------------------------
+
+ Staying true to the Pope_title: "Staying True To The Pope"
+ Staying true to the Pope_desc: ""
+
+ #---------------------------------------------------------
+ # Protestant Path
+ #---------------------------------------------------------
+
+ Found the new Church_title: "Found The New Church"
+ Found the new Church_desc: ""
+
+ #---------------------------------------------------------
+ # Reformed Path
+ #---------------------------------------------------------
+
+ The likes of Calvin and Hutter_title: "The Likes Of Calvin And Hutter"
+ The likes of Calvin and Hutter_desc: ""
+ How radical of a reformation_title: "How Radical Of A Reformation"
+ How radical of a reformation_desc: ""
+
+ #---------------------------------------------------------
+ # Very Radical
+ #---------------------------------------------------------
+
+ A truly radical reformation_title: "A Truly Radical Reformation"
+ A truly radical reformation_desc: ""
+
+ #---------------------------------------------------------
+ # Not So Radical
+ #---------------------------------------------------------
+
+ Keeping it real_title: "Keeping It Real"
+ Keeping it real_desc: ""
+
+ #---------------------------------------------------------
+ # Branching 1
+ #---------------------------------------------------------
+
+ Branching mission_title: "Branching Mission"
+ Branching mission_desc: ""
